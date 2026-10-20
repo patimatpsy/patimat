@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Откуда твой стыд — тест Патимат</title>
+<meta name="description" content="Бесплатный тест: 16 коротких вопросов, чтобы узнать, откуда твой стыд и насколько он влияет на твои решения.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F8F5F0;--sand:#EBE3D6;--ink:#2B1B14;--walnut:#5B3A27;--muted:#8A7468;--wine:#74241F;--wine-soft:#E9D6CF;--line:#DCD0C2;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:640px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{font-weight:600;color:var(--walnut)}
+h1,h2{font-family:var(--display);font-weight:500;line-height:1.08;margin:0;text-wrap:balance;color:var(--ink)}
+h1{font-size:clamp(40px,9vw,64px)}
+h2{font-size:clamp(28px,6vw,40px)}
+em.acc{font-style:italic;color:var(--wine)}
+p{margin:0;max-width:60ch}
+.lead{font-size:19px;color:var(--walnut)}
+.card{background:var(--sand);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.list li{display:flex;gap:12px;align-items:baseline}
+.list li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--wine);transform:translateY(-2px)}
+.btn{appearance:none;border:0;cursor:pointer;font:600 17px/1 var(--body);border-radius:999px;padding:18px 28px;background:var(--ink);color:var(--paper);
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;transition:transform .15s ease, background .15s ease}
+.btn:hover{background:var(--wine)}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn:focus-visible,.opt:focus-visible,input:focus-visible,.link:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.note{font-size:14px;color:var(--muted)}
+label.field{display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--walnut)}
+input[type=text]{font:inherit;padding:16px 18px;border-radius:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);width:100%}
+.progress{display:flex;flex-direction:column;gap:10px}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--wine);width:0;transition:width .3s ease}
+.qcount{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.qtext{font-family:var(--display);font-size:clamp(26px,5.6vw,34px);line-height:1.2;text-wrap:balance}
+.opts{display:grid;gap:10px}
+.opt{appearance:none;text-align:left;font:500 17px/1.3 var(--body);color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:14px;
+  padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:border-color .15s, background .15s}
+.opt:hover{border-color:var(--walnut)}
+.opt[aria-pressed=true]{background:var(--wine-soft);border-color:var(--wine)}
+.opt .dot{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line)}
+.opt[aria-pressed=true] .dot{border-color:var(--wine);background:radial-gradient(var(--wine) 45%, transparent 50%)}
+.link{appearance:none;background:none;border:0;padding:6px 0;font:500 15px var(--body);color:var(--walnut);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.level{display:flex;flex-direction:column;gap:12px}
+.scale{position:relative;height:10px;border-radius:10px;background:linear-gradient(90deg,#E9DED2,#D9B7AC 50%,var(--wine))}
+.scale i{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);transform:translate(-50%,-50%)}
+.scale-labels{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.big{font-family:var(--display);font-size:clamp(44px,10vw,64px);line-height:1;color:var(--wine);font-variant-numeric:tabular-nums}
+.sources{display:flex;flex-direction:column;gap:12px}
+.src{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+.src span{font-size:15px}
+.src b{font-size:14px;font-weight:600;color:var(--walnut);font-variant-numeric:tabular-nums}
+.src .track{grid-column:1/-1;height:6px;border-radius:6px;background:var(--line);overflow:hidden}
+.src .track i{display:block;height:100%;background:var(--walnut)}
+.src.top .track i{background:var(--wine)}
+.quote{font-family:var(--display);font-style:italic;font-size:24px;line-height:1.3;color:var(--wine)}
+.offer{background:var(--ink);color:var(--paper);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:16px}
+.offer h2{color:var(--paper)}
+.offer em.acc{color:#F0C9BE}
+.offer p{color:#E8DED3}
+.offer .btn{background:var(--paper);color:var(--ink)}
+.offer .btn:hover{background:var(--wine-soft)}
+.offer .btn.ghost{background:transparent;color:var(--paper);border-color:var(--paper)}
+.offer .note{color:#BFAFA3}
+.steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:baseline;color:#E8DED3}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-style:italic;font-size:24px;color:#F0C9BE}
+.copybox{font:14px/1.5 ui-monospace,Menlo,monospace;background:rgba(255,255,255,.07);color:#E8DED3;border-radius:12px;padding:14px;white-space:pre-wrap;word-break:break-word;max-height:180px;overflow:auto;user-select:all}
+.handle{font-weight:600;color:var(--paper);user-select:all}
+.toast{min-height:1.4em;font-size:14px;color:#F0C9BE}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><b>Патимат · психолог</b><span>тест · 3 минуты</span></div>
+
+  <section id="s-intro" class="fade" style="display:flex;flex-direction:column;gap:24px">
+    <h1>Откуда твой <em class="acc">стыд?</em></h1>
+    <p class="lead">16 коротких вопросов. Узнаешь, из какого места в твоей жизни пришёл стыд и насколько сильно он сейчас влияет на твои решения.</p>
+    <div class="card">
+      <p><b>Подойдёт, если ты узнаёшь себя:</b></p>
+      <ul class="list">
+        <li>пишешь пост и удаляешь, потому что «звучит глупо»</li>
+        <li>называешь цену и сразу хочется скинуть</li>
+        <li>в голове звучит «что люди скажут?»</li>
+        <li>хочется больше, но кажется, что тебе нельзя</li>
+      </ul>
+    </div>
+    <label class="field" for="name">Как тебя зовут? <span class="note">Необязательно, чтобы результат был личным</span>
+      <input id="name" type="text" autocomplete="given-name" maxlength="40" placeholder="Например, Амина">
+    </label>
+    <div class="row">
+      <button class="btn" id="start" type="button">Начать тест →</button>
+      <span class="note">Бесплатно. Ответы видишь только ты.</span>
+    </div>
+    <p class="note">Это не диагноз, а способ честно посмотреть на себя. Если сейчас тебе очень тяжело, пожалуйста, обратись к специалисту лично.</p>
+  </section>
+
+  <section id="s-quiz" hidden style="display:flex;flex-direction:column;gap:24px">
+    <div class="progress">
+      <div class="qcount" id="qcount">Вопрос 1 из 16</div>
+      <div class="bar"><i id="bar"></i></div>
+    </div>
+    <div id="qwrap" class="fade" style="display:flex;flex-direction:column;gap:22px">
+      <p class="qtext" id="qtext"></p>
+      <div class="opts" id="opts" role="group" aria-label="Варианты ответа"></div>
+    </div>
+    <div class="row" style="justify-content:space-between">
+      <button class="link" id="back" type="button">← Назад</button>
+      <span class="note">Отвечай первое, что откликается</span>
+    </div>
+  </section>
+
+  <section id="s-result" hidden style="display:flex;flex-direction:column;gap:28px"></section>
+</div>
+
+<script>
+(function(){
+  var TG = "Patimat_xanmagomedova";
+  var OPTIONS = [["Никогда",0],["Иногда",1],["Часто",2],["Почти всегда",3]];
+  var Q = [
+    ["g","Мне трудно принять комплимент: хочется оправдаться или отшутиться."],
+    ["fam","В голове звучат фразы родителей: «Не позорь меня», «Будь скромнее»."],
+    ["soc","Прежде чем что-то сделать, я думаю: «А что скажут родственники и знакомые?»"],
+    ["sch","В школе надо мной смеялись, или я чувствовала себя «не такой, как все»."],
+    ["g","Я удаляю сторис или посты, потому что мне кажется, что я звучу глупо."],
+    ["rel","Близкий человек критиковал мою внешность, ум или решения."],
+    ["fam","В детстве меня часто сравнивали с другими детьми."],
+    ["soc","В моей семье или окружении были строгие правила, какой должна быть «приличная» женщина."],
+    ["g","Когда я называю цену или прошу о чём-то, мне хочется извиниться."],
+    ["sch","Я боюсь, что меня засмеют, если я ошибусь при людях."],
+    ["rel","Рядом с некоторыми людьми я становлюсь «меньше» и тише."],
+    ["fam","Чтобы меня любили, нужно было быть «хорошей девочкой»."],
+    ["soc","Я скрываю свои желания, чтобы не выделяться."],
+    ["g","Мне кажется, что со мной что-то не так, даже когда всё хорошо."],
+    ["sch","В компании я чаще молчу, хотя мне есть что сказать."],
+    ["rel","Я оправдываюсь, когда трачу деньги или время на себя."]
+  ];
+  var SRC = {
+    fam:{from:"родом из семьи",name:"Семья",voice:"«Будь хорошей девочкой»",
+      text:"Твой стыд родом из детства, из семьи. Тебя любили, но часто через оценку: сравнивали, ждали удобства, стыдили «для твоего же блага». Ты выросла, а внутренний родитель продолжает проверять: достаточно ли ты хорошая.",
+      shows:"Ты стараешься быть безупречной, боишься разочаровать и долго не разрешаешь себе своё.",
+      step:"Сегодня вечером запиши одну фразу родителей, которая чаще всего звучит у тебя в голове. Рядом напиши: «Это их голос, не мой». Просто заметь разницу."},
+    soc:{from:"родом из «что люди скажут»",name:"Окружение и традиции",voice:"«Что люди скажут?»",
+      text:"Твой стыд живёт в правилах окружения: родственники, знакомые, «так у нас не принято». Чтобы быть своей, ты научилась не выделяться и прятать желания.",
+      shows:"Ты оглядываешься на мнение других, прежде чем что-то сделать, и откладываешь своё «на потом».",
+      step:"Вспомни одно желание, от которого ты отказалась из-за «что скажут». Спроси себя: если бы никто не узнал, сделала бы я это?"},
+    sch:{from:"родом из школы",name:"Школа и сверстники",voice:"«Сейчас засмеют»",
+      text:"Твой стыд пришёл из детского коллектива: насмешки, ощущение «я не такая», страх ошибиться при всех. Тогда молчать было безопаснее.",
+      shows:"Ты знаешь ответ, но молчишь. Боишься публичности, эфиров, выступлений и чужого смеха.",
+      step:"Скажи сегодня одну мысль вслух там, где обычно промолчала бы. Потом заметь: что случилось на самом деле?"},
+    rel:{from:"вырос в близких отношениях",name:"Близкие отношения",voice:"«Ты ничего не стоишь»",
+      text:"Твой стыд усилился рядом с близким человеком: партнёр или кто-то важный критиковал, обесценивал, сравнивал. Его слова стали твоим внутренним критиком.",
+      shows:"Рядом с некоторыми людьми ты сжимаешься, оправдываешься за траты на себя и сомневаешься в своих решениях.",
+      step:"Вспомни, рядом с кем тебе легко и свободно. Проведи с этим человеком хотя бы 15 минут на этой неделе и заметь, какой ты становишься."}
+  };
+  var LEVELS = [
+    {max:33,name:"Стыд шепчет",text:"Стыд есть, но он не управляет тобой. Он включается в отдельных ситуациях: перед камерой, при разговоре о деньгах, рядом с определёнными людьми. Хорошее время, чтобы разобраться с ним, пока он тихий."},
+    {max:66,name:"Стыд говорит",text:"Стыд заметно влияет на твои решения. Ты многое понимаешь головой, но тело всё равно сжимается, и ты выбираешь промолчать, уступить или отложить своё."},
+    {max:101,name:"Стыд управляет",text:"Сейчас стыд решает за тебя: что говорить, что носить, сколько просить и можно ли вообще хотеть. Это очень утомляет. И это можно изменить, если идти маленькими шагами и не в одиночку."}
+  ];
+
+  var answers = new Array(Q.length).fill(null), idx = 0, name = "";
+  var $ = function(id){return document.getElementById(id)};
+  var sIntro=$("s-intro"), sQuiz=$("s-quiz"), sRes=$("s-result");
+
+  function show(el){[sIntro,sQuiz,sRes].forEach(function(s){s.hidden = s!==el});window.scrollTo({top:0,behavior:"auto"})}
+
+  function renderQ(){
+    $("qcount").textContent = "Вопрос "+(idx+1)+" из "+Q.length;
+    $("bar").style.width = (idx/Q.length*100)+"%";
+    var w=$("qwrap"); w.classList.remove("fade"); void w.offsetWidth; w.classList.add("fade");
+    $("qtext").textContent = Q[idx][1];
+    var box=$("opts"); box.innerHTML="";
+    OPTIONS.forEach(function(o){
+      var b=document.createElement("button"); b.type="button"; b.className="opt"; b.id="opt-"+o[1];
+      b.setAttribute("aria-pressed", answers[idx]===o[1] ? "true":"false");
+      var t=document.createElement("span"); t.textContent=o[0];
+      var d=document.createElement("span"); d.className="dot"; d.setAttribute("aria-hidden","true");
+      b.appendChild(t); b.appendChild(d);
+      b.addEventListener("click",function(){
+        answers[idx]=o[1];
+        Array.prototype.forEach.call(box.children,function(c){c.setAttribute("aria-pressed","false")});
+        b.setAttribute("aria-pressed","true");
+        setTimeout(next, 220);
+      });
+      box.appendChild(b);
+    });
+  }
+  function next(){ if(idx<Q.length-1){idx++;renderQ()} else {result()} }
+
+  $("start").addEventListener("click",function(){
+    name = ($("name").value||"").trim().slice(0,40);
+    idx=0; show(sQuiz); renderQ();
+  });
+  $("back").addEventListener("click",function(){ if(idx>0){idx--;renderQ()} else {show(sIntro)} });
+
+  function el(tag,cls,text){var e=document.createElement(tag); if(cls)e.className=cls; if(text!=null)e.textContent=text; return e}
+
+  function result(){
+    var total=0, sums={fam:0,soc:0,sch:0,rel:0};
+    Q.forEach(function(q,i){var v=answers[i]||0; total+=v; if(sums[q[0]]!=null) sums[q[0]]+=v});
+    var pct=Math.round(total/(Q.length*3)*100);
+    var level=LEVELS.filter(function(l){return pct<l.max})[0];
+    var order=Object.keys(sums).sort(function(a,b){return sums[b]-sums[a]});
+    var main=SRC[order[0]], second=SRC[order[1]];
+    var hi = name ? name+", " : "";
+
+    sRes.innerHTML="";
+    var head=el("div"); head.style.cssText="display:flex;flex-direction:column;gap:14px";
+    head.appendChild(el("p","note","Твой результат"));
+    var h=el("h1"); h.appendChild(document.createTextNode(hi ? hi+"твой стыд " : "Твой стыд "));
+    h.appendChild(el("em","acc",main.from)); head.appendChild(h);
+    sRes.appendChild(head);
+
+    var lv=el("div","card level");
+    var top=el("div","row"); top.style.justifyContent="space-between";
+    var left=el("div"); left.appendChild(el("p","note","Насколько стыд влияет на жизнь"));
+    left.appendChild(el("h2",null,level.name));
+    top.appendChild(left); top.appendChild(el("div","big",pct+"%"));
+    lv.appendChild(top);
+    var sc=el("div","scale"); var m=el("i"); m.style.left=Math.min(97,Math.max(3,pct))+"%"; sc.appendChild(m); lv.appendChild(sc);
+    var sl=el("div","scale-labels"); ["шепчет","говорит","управляет"].forEach(function(t){sl.appendChild(el("span",null,t))}); lv.appendChild(sl);
+    lv.appendChild(el("p",null,level.text));
+    sRes.appendChild(lv);
+
+    var ms=el("div"); ms.style.cssText="display:flex;flex-direction:column;gap:14px";
+    ms.appendChild(el("p","note","Главный источник"));
+    ms.appendChild(el("h2",null,main.name));
+    ms.appendChild(el("p","quote",main.voice));
+    ms.appendChild(el("p",null,main.text));
+    var sh=el("p"); sh.appendChild(el("b",null,"Как это проявляется: ")); sh.appendChild(document.createTextNode(main.shows)); ms.appendChild(sh);
+    var st=el("div","card"); st.appendChild(el("p","note","Маленький шаг на сегодня")); st.appendChild(el("p",null,main.step)); ms.appendChild(st);
+    sRes.appendChild(ms);
+
+    var all=el("div","card"); all.appendChild(el("p","note","Откуда ещё может идти стыд"));
+    var list=el("div","sources");
+    order.forEach(function(k,i){
+      var p=Math.round(sums[k]/9*100);
+      var r=el("div","src"+(i===0?" top":"")); r.appendChild(el("span",null,SRC[k].name)); r.appendChild(el("b",null,p+"%"));
+      var tr=el("div","track"); var f=el("i"); f.style.width=p+"%"; tr.appendChild(f); r.appendChild(tr); list.appendChild(r);
+    });
+    all.appendChild(list);
+    all.appendChild(el("p","note","Второй по силе источник: "+second.name.toLowerCase()+". Обычно они переплетаются, поэтому смотреть на них лучше вместе."));
+    sRes.appendChild(all);
+
+    var summary = "Привет, Патимат! Прошла тест «Откуда твой стыд» и хочу на бесплатный разбор. РАЗБОР\n"
+      + (name ? "Имя: "+name+"\n" : "")
+      + "Уровень: "+pct+"% — "+level.name+"\n"
+      + "Главный источник: "+main.name+"\n"
+      + "Второй: "+second.name+"\n"
+      + "Ответы: "+answers.map(function(a,i){return (i+1)+"-"+(a||0)}).join(" ");
+
+    var of=el("div","offer");
+    of.appendChild(el("p","note","Бесплатно"));
+    var oh=el("h2"); oh.appendChild(document.createTextNode("Личный разбор твоего теста ")); oh.appendChild(el("em","acc","с Патимат")); of.appendChild(oh);
+    of.appendChild(el("p",null,"Тест показывает, откуда стыд. А на разборе Патимат лично посмотрит твои ответы и скажет, с чего начать именно тебе."));
+    var ol=el("ol","steps");
+    ["Разберём твои ответы и найдём, где стыд держит сильнее всего","Поймём, какие ситуации его включают","Получишь личный план, как с этим справляться"].forEach(function(t){ol.appendChild(el("li",null,t))});
+    of.appendChild(ol);
+    of.appendChild(el("p",null,"Как записаться: нажми кнопку, результат скопируется. Отправь его Патимат в Telegram, и она напишет тебе, чтобы договориться о времени."));
+    var row=el("div","row");
+    var copyBtn=el("button","btn","Скопировать результат"); copyBtn.type="button"; copyBtn.id="copy";
+    var tg=el("a","btn ghost","Открыть Telegram"); tg.href="https://t.me/"+TG; tg.target="_blank"; tg.rel="noopener";
+    row.appendChild(copyBtn); row.appendChild(tg); of.appendChild(row);
+    var toast=el("p","toast",""); toast.setAttribute("aria-live","polite"); of.appendChild(toast);
+    var box=el("div","copybox",summary); box.id="summary"; of.appendChild(box);
+    var hp=el("p","note"); hp.appendChild(document.createTextNode("Telegram Патимат: ")); hp.appendChild(el("span","handle","@"+TG)); of.appendChild(hp);
+    sRes.appendChild(of);
+
+    copyBtn.addEventListener("click",function(){
+      var done=function(){toast.textContent="Скопировано. Теперь открой Telegram и вставь сообщение."};
+      var fallback=function(){var r=document.createRange(); r.selectNodeContents(box); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); toast.textContent="Текст выделен. Скопируй его и отправь Патимат."};
+      try{ navigator.clipboard.writeText(summary).then(done, fallback) }catch(e){ fallback() }
+    });
+
+    var again=el("button","link","Пройти тест заново"); again.type="button"; again.id="again";
+    again.addEventListener("click",function(){answers.fill(null); idx=0; show(sIntro)});
+    sRes.appendChild(again);
+    sRes.appendChild(el("p","note","Это не диагноз, а способ честно посмотреть на себя. Если сейчас тебе очень тяжело, пожалуйста, обратись к специалисту лично."));
+
+    $("bar").style.width="100%";
+    show(sRes);
+  }
+})();
+</script>
+</body>
+</html>
